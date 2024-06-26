@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const movieForm = document.getElementById('movie-form');
   const movieTableBody = document.getElementById('movie-table-body');
   let movies = JSON.parse(localStorage.getItem('bollywoodMovies')) || [];
-  renderMovies();
+
   if (movies.length === 0) {
       // Add initial data if local storage is empty
       const initialData = [
@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
       movies = initialData;
       localStorage.setItem('bollywoodMovies', JSON.stringify(initialData));
   }
+
+  renderMovies();
 
   movieForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -78,33 +80,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateMovie(index) {
-    const movie = movies[index];
-    document.getElementById('movie-title').value = movie.title;
-    document.getElementById('movie-actor').value = movie.actor;
-    document.getElementById('movie-actress').value = movie.actress;
-    document.getElementById('movie-director').value = movie.director;
-    document.getElementById('movie-year').value = movie.year;
-    document.getElementById('movie-genre').value = movie.genre;
+      const movie = movies[index];
+      document.getElementById('movie-title').value = movie.title;
+      document.getElementById('movie-actor').value = movie.actor;
+      document.getElementById('movie-actress').value = movie.actress;
+      document.getElementById('movie-director').value = movie.director;
+      document.getElementById('movie-year').value = movie.year;
+      document.getElementById('movie-genre').value = movie.genre;
 
-    movies.splice(index, 1);
-    localStorage.setItem('movies', JSON.stringify(movies));
-    renderMovies();
-}
+      movies.splice(index, 1);
+      localStorage.setItem('bollywoodMovies', JSON.stringify(movies));
+      renderMovies();
+  }
 
-function deleteMovie(index) {
-    movies.splice(index, 1);
-    localStorage.setItem('movies', JSON.stringify(movies));
-    renderMovies();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Existing CRUD code here...
+  function deleteMovie(index) {
+      movies.splice(index, 1);
+      localStorage.setItem('bollywoodMovies', JSON.stringify(movies));
+      renderMovies();
+  }
 
   // Chart.js code for analytics page
   const ctx = document.getElementById('moviesChart').getContext('2d');
-  const movies = JSON.parse(localStorage.getItem('movies')) || [];
-
-  // Group movies by release year
   const moviesByYear = movies.reduce((acc, movie) => {
       acc[movie.year] = (acc[movie.year] || 0) + 1;
       return acc;
@@ -114,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const movieCounts = years.map(year => moviesByYear[year]);
 
   const moviesChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
           labels: years,
           datasets: [{
@@ -141,6 +137,4 @@ document.addEventListener('DOMContentLoaded', () => {
           }
       }
   });
-});
-
 });
