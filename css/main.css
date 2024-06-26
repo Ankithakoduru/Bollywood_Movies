@@ -56,7 +56,7 @@ section {
   margin-bottom: 40px;
 }
 
-section h2, section h3 {
+section h2, section h3, section h4 {
   color: #e50914; /* Netflix red for section headings */
   font-size: 2em;
   margin-bottom: 20px;
