@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bollywood Movies Information</title>
+    <title>Analytics</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,23 +35,17 @@
         </nav>
     </div>
     <div class="container">
-        <section id="home">
-            <h2>Home</h2>
-            <p>Welcome to our Bollywood movies information website. Here you can find detailed information about
-                Bollywood movies including the actors, actresses, directors, IMDB movie ratings, release years, and
-                genres.</p>
-        </section>
-        <section id="data">
-            <h2>Data</h2>
-            <p>In the Data section, you will find comprehensive datasets containing information about Bollywood movies.
-                This includes movie titles, cast and crew, release dates, and genres.</p>
-        </section>
-        <section id="analytics">
-            <h2>Analytics</h2>
-            <p>The Analytics section provides insights and visualizations based on the Bollywood movies data. Discover
-                trends, patterns, and interesting statistics about your favorite movies and stars.</p>
-        </section>
+        <header>
+            <h1>Analytics</h1>
+        </header>
+        <main>
+            <section id="chart-section">
+                <h2>Movies Released Each Year</h2>
+                <canvas id="moviesChart"></canvas>
+            </section>
+        </main>
     </div>
+    <script src="main.js"></script>
 </body>
-
 </html>
+
